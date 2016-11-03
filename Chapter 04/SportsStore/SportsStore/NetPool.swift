@@ -8,7 +8,7 @@
 
 import Foundation
 
-private class NetPool {
+public class NetPool {
     private let connectCount=3
     private var connections=[NetworkConnection]()
     private var semaphore:DispatchSemaphore
