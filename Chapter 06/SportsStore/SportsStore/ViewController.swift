@@ -55,16 +55,16 @@ class ViewController: UIViewController, UITableViewDataSource {
         super.didReceiveMemoryWarning()
     }
     
-    func tableView(tableView: UITableView,
+    func tableView(_ tableView: UITableView,
         numberOfRowsInSection section: Int) -> Int {
             return products.count;
     }
     
-    func tableView(tableView: UITableView,
-        cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-            let product = products[indexPath.row];
-            let cell = tableView.dequeueReusableCellWithIdentifier("ProductCell")
-                as ProductTableCell;
+    func tableView(_ tableView: UITableView,
+        cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+            let product = products[(indexPath as NSIndexPath).row];
+            let cell = tableView.dequeueReusableCell(withIdentifier: "ProductCell")
+                as! ProductTableCell;
             cell.product = products[indexPath.row];
             cell.nameLabel.text = product.name;
             cell.descriptionLabel.text = product.productDescription;
@@ -73,7 +73,7 @@ class ViewController: UIViewController, UITableViewDataSource {
             return cell;
     }
     
-    @IBAction func stockLevelDidChange(sender: AnyObject) {
+    @IBAction func stockLevelDidChange(_ sender: AnyObject) {
         if var currentCell = sender as? UIView {
             while (true) {
                 currentCell = currentCell.superview!;
